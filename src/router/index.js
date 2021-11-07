@@ -64,7 +64,18 @@ export const constantRoutes = [
       meta: { title: '列表页面', icon: 'dashboard' }
     }]
   },
-
+  {
+    path: '/form',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Form',
+        component: () => import('@/views/form/index'),
+        meta: { title: '表单页面', icon: 'form' }
+      }
+    ]
+  },
   {
     path: '/example',
     component: Layout,
@@ -83,19 +94,6 @@ export const constantRoutes = [
         name: 'Tree',
         component: () => import('@/views/tree/index'),
         meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
       }
     ]
   },
