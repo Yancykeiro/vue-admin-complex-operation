@@ -81,6 +81,5 @@ export default {
 .line{
   text-align: center;
 }
-
 </style>
 
