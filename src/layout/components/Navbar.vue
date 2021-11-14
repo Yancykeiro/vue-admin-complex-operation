@@ -28,20 +28,23 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-    <div class="roles"><span>Your roles:</span><el-button type="primary" round> {{ name }}</el-button></div>
+    <div class="roles"><span>Your roles:</span><el-button type="primary" round @click="debounce"> {{ name }}</el-button></div>
   </div>
 </template>
 
 <script>
+
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import { debounce } from '@/layout/mixin/debounce'
 
 export default {
   components: {
     Breadcrumb,
     Hamburger
   },
+  mixins: [debounce],
   computed: {
     ...mapGetters([
       'sidebar',
