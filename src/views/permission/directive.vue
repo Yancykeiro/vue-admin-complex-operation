@@ -50,7 +50,7 @@
         <div v-if="checkPermission(['editor'])">我是editor权限下展示的内容</div>
         <div v-if="checkPermission(['admin','editor'])">我是ALL权限下展示的内容</div>
       </div>
-      <el-tabs type="border-card" style="width:550px;">
+      <!-- <el-tabs type="border-card" style="width:550px;">
         <el-tab-pane v-if="checkPermission(['admin'])" label="Admin">
           Admin can see this
           <el-tag class="permission-sourceCode" type="info">
@@ -71,7 +71,7 @@
             v-if="checkPermission(['admin','editor'])"
           </el-tag>
         </el-tab-pane>
-      </el-tabs>
+      </el-tabs> -->
     </div>
   </div>
 </template>

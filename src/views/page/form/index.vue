@@ -2,12 +2,15 @@
   <div class="app-container">
     <el-form ref="form" :model="form" label-width="120px">
       <el-form-item label="活动名称">
-        <el-input v-model="form.name" />
+        <s-validate #default="{ validate }" :rules="rules.name" :value="form.name">
+          <el-input v-model="form.name" @blur="validate" />
+        </s-validate>
+        <!-- <el-input v-model="form.name" /> -->
       </el-form-item>
       <el-form-item label="活动区域">
         <el-select v-model="form.region" placeholder="请选择活动区域">
-          <el-option label="Zone one" value="上海" />
-          <el-option label="Zone two" value="北京" />
+          <el-option label="上海" value="上海" />
+          <el-option label="北京" value="北京" />
         </el-select>
       </el-form-item>
       <el-form-item label="活动时间">
@@ -37,20 +40,49 @@
         </el-radio-group>
       </el-form-item>
       <el-form-item label="活动形式">
-        <el-input v-model="form.desc" type="textarea" />
+        <s-validate #default="{ validate }" :rules="rules.desc" :value="form.desc">
+          <el-input v-model="form.desc" type="textarea" @blur="validate" />
+        </s-validate>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
         <el-button @click="onCancel">取消</el-button>
       </el-form-item>
     </el-form>
+
   </div>
+
 </template>
 
 <script>
+import SValidate from './components/svalidate.vue'
+
 export default {
+  components: {
+    SValidate
+  },
   data() {
     return {
+      value: '',
+      rules: {
+        name: [
+          {
+            test: function(value) {
+              return value
+            },
+            message: '请输入活动名称'
+          }
+        ],
+        desc: [
+          {
+            test: function(value) {
+              // return /\d+/.test(value)
+              return value
+            },
+            message: '请输入活动形式'
+          }
+        ]
+      },
       form: {
         name: '',
         region: '',
@@ -65,11 +97,11 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$message('submit!')
+      this.$message('提交成功')
     },
     onCancel() {
       this.$message({
-        message: 'cancel!',
+        message: '取消提交',
         type: 'warning'
       })
     }
