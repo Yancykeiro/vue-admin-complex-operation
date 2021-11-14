@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form ref="form" :model="form" label-width="120px">
+    <el-form ref="form" :model="form" label-width="100px">
       <el-form-item label="活动名称">
         <s-validate #default="{ validate }" :rules="rules.name" :value="form.name">
           <el-input v-model="form.name" @blur="validate" />

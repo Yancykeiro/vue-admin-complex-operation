@@ -1,78 +1,29 @@
 <template>
   <div class="app-container">
     <switch-roles @change="handleRolesChange" />
-    <div>
-      <div v-permission="['admin']">我是admin权限下展示的内容</div>
-      <div v-permission="['admin','editor']">我是ALL权限下展示的内容</div>
-      <div v-permission="['editor']">我是editor权限下展示的内容</div>
-    </div>
-    <!-- <div :key="key" style="margin-top:30px;">
-      <div>
-        <span v-permission="['admin']" class="permission-alert">
-          Only
-          <el-tag class="permission-tag" size="small">admin</el-tag> can see this
-        </span>
-        <el-tag v-permission="['admin']" class="permission-sourceCode" type="info">
-          v-permission="['admin']"
-        </el-tag>
+
+    <el-card class="box-card">
+      <div slot="header" class="clearfix">
+        <span>使用v-permission</span>
       </div>
-
-      <div>
-        <span v-permission="['editor']" class="permission-alert">
-          Only
-          <el-tag class="permission-tag" size="small">editor</el-tag> can see this
-        </span>
-        <el-tag v-permission="['editor']" class="permission-sourceCode" type="info">
-          v-permission="['editor']"
-        </el-tag>
+      <div class="text item">
+        <div v-permission="['admin']">我是admin权限下展示的内容</div>
+        <div v-permission="['admin','editor']">我是ALL权限下展示的内容</div>
+        <div v-permission="['editor']">我是editor权限下展示的内容</div>
       </div>
+    </el-card>
 
-      <div>
-        <span v-permission="['admin','editor']" class="permission-alert">
-          Both
-          <el-tag class="permission-tag" size="small">admin</el-tag> and
-          <el-tag class="permission-tag" size="small">editor</el-tag> can see this
-        </span>
-        <el-tag v-permission="['admin','editor']" class="permission-sourceCode" type="info">
-          v-permission="['admin','editor']"
-        </el-tag>
+    <el-card class="box-card">
+      <div slot="header" class="clearfix">
+        <span>使用v-if</span>
       </div>
-    </div> -->
-
-    <div :key="'checkPermission'+key" style="margin-top:60px;">
-      <aside>
-        In some cases, using v-permission will have no effect. For example: Element-UI's Tab component or el-table-column and other scenes that dynamically render dom. You can only do this with v-if.
-        <br> e.g.
-      </aside>
-
-      <div>
+      <div class="text item">
         <div v-if="checkPermission(['admin'])">我是admin权限下展示的内容</div>
         <div v-if="checkPermission(['editor'])">我是editor权限下展示的内容</div>
         <div v-if="checkPermission(['admin','editor'])">我是ALL权限下展示的内容</div>
       </div>
-      <!-- <el-tabs type="border-card" style="width:550px;">
-        <el-tab-pane v-if="checkPermission(['admin'])" label="Admin">
-          Admin can see this
-          <el-tag class="permission-sourceCode" type="info">
-            v-if="checkPermission(['admin'])"
-          </el-tag>
-        </el-tab-pane>
+    </el-card>
 
-        <el-tab-pane v-if="checkPermission(['editor'])" label="Editor">
-          Editor can see this
-          <el-tag class="permission-sourceCode" type="info">
-            v-if="checkPermission(['editor'])"
-          </el-tag>
-        </el-tab-pane>
-
-        <el-tab-pane v-if="checkPermission(['admin','editor'])" label="Admin-OR-Editor">
-          Both admin or editor can see this
-          <el-tag class="permission-sourceCode" type="info">
-            v-if="checkPermission(['admin','editor'])"
-          </el-tag>
-        </el-tab-pane>
-      </el-tabs> -->
-    </div>
   </div>
 </template>
 
@@ -100,6 +51,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.box-card{
+  margin-top: 20px;
+}
+.text {
+    font-size: 14px;
+  }
+
+  .item {
+    margin-bottom: 18px;
+    div{
+      margin-bottom: 10px;
+    }
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  .clearfix:after {
+    clear: both
+  }
+
+  .box-card {
+    width: 480px;
+  }
 .app-container {
   ::v-deep .permission-alert {
     width: 320px;
