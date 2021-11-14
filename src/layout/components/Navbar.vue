@@ -28,6 +28,7 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
+    <div class="roles"><span>Your roles:</span><el-button type="primary" round> {{ name }}</el-button></div>
   </div>
 </template>
 
@@ -44,7 +45,8 @@ export default {
   computed: {
     ...mapGetters([
       'sidebar',
-      'avatar'
+      'avatar',
+      'name'
     ])
   },
   methods: {
@@ -83,10 +85,20 @@ export default {
   .breadcrumb-container {
     float: left;
   }
-
+  .roles{
+    height: 100%;
+    line-height: 50px;
+    float: right;
+    margin-right: 50px;
+    color: #303133;
+    font-size: 14px;
+    span{
+      margin-right: 10px;
+    }
+  }
   .right-menu {
     float: right;
-    height: 100%;
+    height : 100%;
     line-height: 50px;
 
     &:focus {
@@ -135,5 +147,6 @@ export default {
       }
     }
   }
+
 }
 </style>
